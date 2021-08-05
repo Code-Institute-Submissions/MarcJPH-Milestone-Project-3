@@ -1,10 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
+
+<ul class="collapsible popout">
     {% for places in place_to_visit %}
-        {{ places.name }}<br>
-        {{ places.age_range }}<br>
-        {{ places.description }}<br>
-        {{ places.category_name}}<br>
+    <li>
+        <div class="collapsible-header">
+            <i class="fas fa-map-marker-alt"></i>
+            {{ places.name }}
+        </div>
+        <div class="collapsible-body">
+            {{ places.category_name }}
+            <p>Age Range: {{ places.age_range }}</p>
+            <p>{{ places.description }}</p>
+            <br>
+            <h5>Purchase Tickets: {{ places.ticket_link }}</h5>
+        </div>
+    </li>
     {% endfor %}
+</ul>
 
 {% endblock %}
