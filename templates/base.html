@@ -13,10 +13,33 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
     {% block styles %}
     {% endblock %}
-    <title>Kids Activities</title>
+    <title>Childrens Day Out</title>
 </head>
 
 <body>
+
+    <header>
+        <!--top navbar-->
+        <nav>
+            <div class="nav-wrapper">
+              <a href="{{ url_for('get_activities') }}" class="brand-logo center">Childrens Day Out</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-caret-square-down"></i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="{{ url_for('get_activities') }}">Home</a></li>
+                <li><a href="#">Add A New Place</a></li>
+              </ul>
+            </div>
+          </nav>
+        
+          <!--mobile sidenav-->
+          <ul class="sidenav" id="mobile-demo">
+            <li><h5 class="center-align">Childrens Day Out</h5></li>
+            <li><a href="{{ url_for('get_activities') }}">Home</a></li>
+            <li><a href="#">Add A New Place</a></li>
+          </ul>
+    </header>
+
+
     {% block content %}
     {% endblock %}
 
