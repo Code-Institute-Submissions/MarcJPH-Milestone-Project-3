@@ -1,5 +1,11 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $('.sidenav').sidenav();
     $('.collapsible').collapsible();
-    $('.carousel').carousel();
+    $('.carousel.carousel-slider').carousel({
+        fullWidth: true,
+        indicators: true
+    });
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
 });
