@@ -1,7 +1,7 @@
 import os
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, request, url_for)
 from flask_pymongo import PyMongo
 from flask_wtf import FlaskForm
 from wtforms import StringField
@@ -22,7 +22,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    return render_template("index.html", page_title="Home")
+    return render_template("index.html")
 
 
 @app.route("/get_activities")
@@ -41,18 +41,28 @@ def form():
         activity = {
             "category_name": request.form.get("category_name"),
             "name": request.form.get("name"),
+            "description": request.form.get("description"),
             "age_range": request.form.get("age_range"),
-            "description": request.form.get("description")
+            "location": request.form.get("location")
         }
-        mongo.db.tasks.insert_one(task)
+        mongo.db.place_to_visit.insert_one(activity)
         flash("Thank you for adding a new activity to our site for others to enjoy!!")
         return redirect(url_for("get_activities"))
 
-    categories = mongo.db.categories.find().sort("category_name", 1),
+    categories = mongo.db.categories.find().sort("category_name", 1)
     age_ranges = mongo.db.age_ranges.find()
     return render_template("add_activity.html", categories=categories, age_ranges=age_ranges)
     # form = AddForm()
     # return render_template("add_activity.html", form=form)
+
+
+@app.route("/edit_activity/<activity_id>", methods=["GET", "POST"])
+def edit_activity(activity_id):
+    activity = mongo.db.place_to_visit.find_one({"_id": ObjectId(activity_id)})
+
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    age_ranges = mongo.db.age_ranges.find()
+    return render_template("edit_activity.html", activity=activity, categories=categories, age_ranges=age_ranges)
 
 
 if __name__ == "__main__":
