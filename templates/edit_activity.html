@@ -11,9 +11,13 @@
             <div class="input-field col s12">
                 <i class="prefix light-blue-text text-darken-4"></i>
                 <select id="category_name" name="category_name" class="validate" required>
-                    <option value="" disabled selected>Choose Category</option>
+                    <option value="" disabled>Choose Category</option>
                     {% for category in categories %}
-                    <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% if category.category_name == activity.category_name %}
+                        <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                        {% else %}
+                        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label for="category_name">Activity Category</label>
@@ -23,7 +27,8 @@
         <div class="row col s12 m6">
             <div class="input-field col s12">
                 <i class="prefix light-blue-text text-darken-4"></i>
-                <input id="name" name="name" type="text" class="validate" required>
+                <input id="name" name="name" value="{{ activity.name }}"
+                type="text" class="validate" required>
                 <label for="name">Place Name</label>
             </div>
         </div>
@@ -32,7 +37,7 @@
             <div class="input-field col s12">
                 <i class="prefix light-blue-text text-darken-4"></i>
                 <textarea id="description" name="description" minlength="15" maxlength="350"
-                    class="materialize-textarea"></textarea>
+                    class="materialize-textarea">{{ activity.description }}</textarea>
                 <label for="description">Place Description</label>
             </div>
         </div>
@@ -43,7 +48,11 @@
                 <select id="age" name="age" class="validate" required>
                     <option value="" disabled selected>Choose Age Range</option>
                     {% for ages in age_ranges %}
-                    <option value="{{ ages.age }}">{{ ages.age }}</option>
+                        {% if ages.age == activity.age_range %}
+                        <option value="{{ ages.age }}" selected>{{ ages.age }}</option>
+                        {% else %}
+                        <option value="{{ ages.age }}">{{ ages.age }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
                 <label for="age">Age Range</label>
@@ -54,13 +63,17 @@
             <div class="input-field col s12">
                 <i class="prefix light-blue-text text-darken-4"></i>
                 <textarea id="location" name="location" minlength="3" maxlength="20"
-                    class="materialize-textarea"></textarea>
+                    class="materialize-textarea">{{ activity.location }}</textarea>
                 <label for="description">Place Location</label>
             </div>
         </div>
         <!--submit button-->
         <div class="row">
             <div class="col s12 center-align">
+                <!--cancel button-->
+                <a href="{{ url_for('get_activities') }}" class="btn blue-grey darken-1">
+                    Cancel
+                </a>
                 <button type="submit" class="btn waves-effect waves-light teal">
                     Edit Activity</button>
             </div>

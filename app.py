@@ -58,6 +58,18 @@ def form():
 
 @app.route("/edit_activity/<activity_id>", methods=["GET", "POST"])
 def edit_activity(activity_id):
+    if request.method == "POST":
+        load = {
+            "category_name": request.form.get("category_name"),
+            "name": request.form.get("name"),
+            "description": request.form.get("description"),
+            "age_range": request.form.get("age_range"),
+            "location": request.form.get("location")
+        }
+        mongo.db.place_to_visit.update({"_id": ObjectId(activity_id)}, load)
+        flash("Activity succesfully updated. Thank you for keeping our site up to date!")
+        return redirect(url_for("get_activities"))
+        
     activity = mongo.db.place_to_visit.find_one({"_id": ObjectId(activity_id)})
 
     categories = mongo.db.categories.find().sort("category_name", 1)
