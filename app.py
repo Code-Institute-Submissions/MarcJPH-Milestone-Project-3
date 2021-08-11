@@ -77,6 +77,13 @@ def edit_activity(activity_id):
     return render_template("edit_activity.html", activity=activity, categories=categories, age_ranges=age_ranges)
 
 
+@app.route("/delete_activity/<activity_id>")
+def delete_activity(activity_id):
+    mongo.db.place_to_visit.remove({"_id": ObjectId(activity_id)})
+    flash("Actvity Successfully Deleted. Thank You!")
+    return redirect(url_for("get_activities"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
