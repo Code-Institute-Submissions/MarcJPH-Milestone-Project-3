@@ -38,3 +38,11 @@ footer h5 {
     height: auto;
 }
 
+.btn-small {
+    margin: 10px;
+}
+
+.tickets {
+    margin-top: 20px;
+    margin-bottom: 18px;
+}

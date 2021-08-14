@@ -45,7 +45,8 @@ def form():
             "name": request.form.get("name"),
             "description": request.form.get("description"),
             "age_range": request.form.get("age"),
-            "location": request.form.get("location")
+            "location": request.form.get("location"),
+            "image": request.form.get("image")
         }
         mongo.db.place_to_visit.insert_one(activity)
         flash("Thank you for adding a new activity to our site for others to enjoy!!")
@@ -67,7 +68,8 @@ def edit_activity(activity_id):
             "name": request.form.get("name"),
             "description": request.form.get("description"),
             "age_range": request.form.get("age_range"),
-            "location": request.form.get("location")
+            "location": request.form.get("location"),
+            "image": request.form.get("image")
         }
         mongo.db.place_to_visit.update({"_id": ObjectId(activity_id)}, load)
         flash("Activity succesfully updated. Thank you for keeping our site up to date!")
