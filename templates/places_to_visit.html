@@ -2,33 +2,43 @@
 {% block content %}
 
 
-{% for places in place_to_visit %}
-<div class="card">
-    <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="{{ places.image }}">
-    </div>
-    <div id="place_name" class="card-content">
-        <i class="fas fa-map-marker-alt"></i>
-        <span class="card-title activator grey-text text-darken-4">{{ places.name }}<i
-                class="fas fa-ellipsis-v right"></i></span>
-    </div>
-    <div id="place_details" class="card-reveal">
-        <span class="card-title grey-text
-        text-darken-4">{{ places.name }}
-            <i class="far fa-window-close right"></i>
-        </span>
-        {{ places.category_name }}<br>
-        <p>Location: {{ places.location }}</p>
-        <p>Age Range: {{ places.age_range }}</p>
-        <p>{{ places.description }}</p>
-        <br>
-        <h5>Purchase Tickets: {{ places.ticket_link }}</h5>
-        <div>
-            <a href="{{ url_for('edit_activity', activity_id=places._id) }}" class="btn-small">Edit Activity</a>
-            <a href="{{ url_for('delete_activity', activity_id=places._id) }}" class="btn-small">Delete Activity</a>
+
+<div class="container">
+    <div class="row">
+        {% for places in place_to_visit %}
+        <div class="col s4">
+            <div class="card small stickyaction">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator img_small" src="{{ places.image }}">
+                </div>
+                <div id="place_name" class="card-content">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="card-title activator grey-text text-darken-4">{{ places.name }}<i
+                            class="fas fa-ellipsis-v right"></i></span>
+                </div>
+                <div id="place_details" class="card-reveal">
+                    <span class="card-title grey-text
+                        text-darken-4">{{ places.name }}
+                        <i class="far fa-window-close right"></i>
+                    </span>
+                    {{ places.category_name }}<br>
+                    <p>Location: {{ places.location }}</p>
+                    <p>Age Range: {{ places.age_range }}</p>
+                    <p>{{ places.description }}</p>
+                    <br>
+                    <h5>Purchase Tickets: {{ places.ticket_link }}</h5>
+                    <div>
+                        <a href="{{ url_for('edit_activity', activity_id=places._id) }}" class="btn-small">Edit
+                            Activity</a>
+                        <a href="{{ url_for('delete_activity', activity_id=places._id) }}" class="btn-small">Delete
+                            Activity</a>
+                    </div>
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
 </div>
-{% endfor %}
+
 
 {% endblock %}
