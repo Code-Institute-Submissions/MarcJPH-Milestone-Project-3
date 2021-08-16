@@ -46,3 +46,12 @@ footer h5 {
     margin-top: 20px;
     margin-bottom: 18px;
 }
+
+
+/*----------------Media Query----------*/
+
+@media(max-width: 540px) {
+    nav .brand-logo{
+        font-size: 1.3rem;
+    }
+}
