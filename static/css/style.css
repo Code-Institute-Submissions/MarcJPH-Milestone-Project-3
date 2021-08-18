@@ -57,6 +57,9 @@ body {
     margin-bottom: 18px;
 }
 
+strong {
+    font-weight: 1000;
+}
 
 /*----------------Media Query----------*/
 

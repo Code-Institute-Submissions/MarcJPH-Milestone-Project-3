@@ -25,7 +25,7 @@ def home():
 #returns the current list of activities in the database
 @app.route("/get_activities")
 def get_activities():
-    place_to_visit = list(mongo.db.place_to_visit.find())
+    place_to_visit = list(mongo.db.place_to_visit.find().sort("_id", -1))
     return render_template("places_to_visit.html", place_to_visit=place_to_visit)
 
 
@@ -34,8 +34,8 @@ def get_activities():
 
 
 #to add activity to site
-@app.route("/form", methods=["GET", "POST"])
-def form():
+@app.route("/add_activity", methods=["GET", "POST"])
+def add_activity():
     if request.method == "POST":
         activity = {
             "category_name": request.form.get("category_name"),
@@ -59,6 +59,7 @@ def form():
 # to edit activities on the site
 @app.route("/edit_activity/<activity_id>", methods=["GET", "POST"])
 def edit_activity(activity_id):
+    activity = mongo.db.place_to_visit.find_one_or_404({"_id": ObjectId(activity_id)})
     if request.method == "POST":
         load = {
             "category_name": request.form.get("category_name"),
@@ -71,15 +72,13 @@ def edit_activity(activity_id):
         mongo.db.place_to_visit.update({"_id": ObjectId(activity_id)}, load)
         flash("Activity succesfully updated. Thank you for keeping our site up to date!")
         return redirect(url_for("get_activities"))
-        
-    activity = mongo.db.place_to_visit.find_one({"_id": ObjectId(activity_id)})
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     age_ranges = mongo.db.age_ranges.find()
     return render_template("edit_activity.html", activity=activity, categories=categories, age_ranges=age_ranges)
 
 
-# to delete activities from the site
+#to delete activities from the site
 @app.route("/delete_activity/<activity_id>")
 def delete_activity(activity_id):
     mongo.db.place_to_visit.remove({"_id": ObjectId(activity_id)})
