@@ -43,7 +43,8 @@ def add_activity():
             "description": request.form.get("description"),
             "age_range": request.form.get("age"),
             "location": request.form.get("location"),
-            "image": request.form.get("image")
+            "image": request.form.get("image"),
+            "ticket_link": request.form.get("ticket_link")
         }
         mongo.db.place_to_visit.insert_one(activity)
         flash("Thank you for adding a new activity to our site for others to enjoy!!")
