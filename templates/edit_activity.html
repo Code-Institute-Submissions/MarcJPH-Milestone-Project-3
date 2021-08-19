@@ -34,7 +34,7 @@
         <div class="row col s12 m6">
             <div class="input-field col s12">
                 <textarea id="description" name="description" minlength="15" maxlength="350"
-                    class="materialize-textarea">{{ activity.description }}</textarea>
+                    class="validate materialize-textarea">{{ activity.description }}</textarea>
                 <label for="description">Place Description</label>
             </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="row col s12 m6">
             <div class="input-field col s12">
                 <textarea id="location" name="location" minlength="3" maxlength="20"
-                    class="materialize-textarea">{{ activity.location }}</textarea>
+                    class="validate materialize-textarea" required>{{ activity.location }}</textarea>
                 <label for="description">Place Location</label>
             </div>
         </div>
