@@ -29,10 +29,6 @@ def get_activities():
     return render_template("places_to_visit.html", place_to_visit=place_to_visit)
 
 
-# class AddForm(FlaskForm):
-    # name = StringField('name', validators=[DataRequired()])
-
-
 #to add activity to site
 @app.route("/add_activity", methods=["GET", "POST"])
 def add_activity():
@@ -53,8 +49,6 @@ def add_activity():
     categories = mongo.db.categories.find().sort("category_name", 1)
     age_ranges = mongo.db.age_ranges.find()
     return render_template("add_activity.html", categories=categories, age_ranges=age_ranges)
-    # form = AddForm()
-    # return render_template("add_activity.html", form=form)
 
 
 # to edit activities on the site
