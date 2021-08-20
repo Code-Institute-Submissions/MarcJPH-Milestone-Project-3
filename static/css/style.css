@@ -4,42 +4,23 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
+
+/*----------------Paddings/Margins/Text----------*/
+
+.about {
+    margin: 28px;
+}
+
 .btn-small {
-    margin: 25px;
-}
-
-.flash {
-    color: white;
-}
-
-.footer {
-    position: relative;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-    text-align: center;
-}
-
-.footer h5 {
-    color: white;
+    margin: 10px;
 }
 
 .copyright {
     text-align: center;
 }
 
-.about {
-    margin: 28px;
-}
-
-.img_small {
-    width: 100px;
-    height: auto;
-}
-
-.btn-small {
-    margin: 10px;
+.flash {
+    color: white;
 }
 
 .tickets {
@@ -55,9 +36,32 @@ strong {
     font-size: 1.5rem;
 }
 
+
+/*----------------Footer----------*/
+.footer {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: center;
+}
+
+.footer h5 {
+    color: white;
+}
+
+
+/*----------------Images----------*/
+
 .carousel .carousel-item>img {
     width: 100%;
-    object-fit: contain;
+    height: 43.75rem;
+}
+
+.img_small {
+    width: 100px;
+    height: auto;
 }
 
 /*----------------Media Query----------*/
