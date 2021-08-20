@@ -12,23 +12,28 @@ body {
     color: white;
 }
 
-.carousel-item {
+/* .images {
+    height: 500px;
+} */
+/* .carousel-item {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
+} */
 
-.carousel .carousel-item>img {
+/* .carousel .carousel-item>img {
     width: 100%;
     height: auto;
-}
+} */
 
-/* .footer {
-    position: fixed;
+.footer {
+    position: relative;
+    right: 0;
     bottom: 0;
     left: 0;
-    width: 100%;
-} */
+    padding: 1rem;
+    text-align: center;
+}
 
 
 .footer h5 {
