@@ -51,6 +51,15 @@ strong {
     font-weight: bold;
 }
 
+.card .card-title {
+    font-size: 1.5rem;
+}
+
+.carousel .carousel-item>img {
+    width: 100%;
+    object-fit: contain;
+}
+
 /*----------------Media Query----------*/
 
 @media(max-width: 540px) {
