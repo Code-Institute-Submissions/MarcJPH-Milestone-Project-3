@@ -56,7 +56,7 @@ strong {
 
 .carousel .carousel-item>img {
     width: 100%;
-    height: 43.75rem;
+    height: auto;
 }
 
 .img_small {
