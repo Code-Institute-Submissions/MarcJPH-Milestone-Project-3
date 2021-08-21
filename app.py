@@ -56,8 +56,8 @@ def add_activity():
 # to edit activities on the site
 @app.route("/edit_activity/<activity_id>", methods=["GET", "POST"])
 def edit_activity(activity_id):
-    activity = mongo.db.place_to_visit.find_one_or_404
-    ({"_id": ObjectId(activity_id)})
+    activity = mongo.db.place_to_visit.find_one_or_404(
+        {"_id": ObjectId(activity_id)})
     if request.method == "POST":
         load = {
             "category_name": request.form.get("category_name"),
