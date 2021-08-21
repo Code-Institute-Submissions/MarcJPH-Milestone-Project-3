@@ -30,11 +30,11 @@
                     <p>Location: <strong>{{ places.location }}</strong></p>
                     <p>Age Range: <strong>{{ places.age_range }}</strong></p>
                     <p>{{ places.description }}</p>
-                    {% if places.ticket_link is defined %}
+                    {% if places.ticket_link is none or places.ticket_link == '' %}
+                    <h6>No link for tickets yet.</h6>
+                    {% else %}
                     <h6 class="tickets">Purchase Tickets: <a href="{{ places.ticket_link }}" target="_blank">Click
                             Here</a></h6>
-                    {% else %}
-                    <h6>No link for tickets yet.</h6>
                     {% endif %}
 
                     <div>
