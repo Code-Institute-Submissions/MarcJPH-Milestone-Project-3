@@ -206,17 +206,8 @@ The site is easy to navigate around with 3 main pages but bright and colourful f
 
 ### Deployment
 
-This project is stored [GitPod]() and is hosted using [Heroku](https://kids-activities-project.herokuapp.com/).
+The source code of the project is deployed to [GitPod](https://github.com/MarcJPH/Milestone-Project-3) and the web application is hosted using [Heroku](https://kids-activities-project.herokuapp.com/). Commiting and pushing updates to the master branch of the Github repository will also update the application on Heroku. 
 
-#### Deploying to GitHub Pages
-
-The website was deployed to GitHub pages via the below procedure:
-1. Log into **GitHub**.
-2. Locate and select the repository named [MarcJPH/Milestone-Project-3](https://github.com/MarcJPH/Milestone-Project-3).
-3. Near the top of the page select the **Settings** menu option.
-4. Select the **The GitHub Pages** menu option on the left hand side.
-5. Under Source, change the drop-down menu where None is labelled to **Master Branch**.
-6. This deploys the website and creates a link for the website in the GitHub pages section.
 
 #### Running the Project Locally
 
@@ -234,13 +225,17 @@ To run the project locally you will have to clone it first. Follow the below ste
 
 To deploy to Heroku using Gitpod, follow the below steps:
 
-1. On the Heroku dashboard, create a new application.
-2. Still within Heroku, got to the Settings tab and click on the Reveal Config Vars button. Click on the Add button and add in settings for IP (0.0.0.0), PORT (5000), MONGODB_NAME, MONGO_URI.
-3. To install Heroku via the Terminal, type 'npm install -g heroku'.
+1. On the Heroku dashboard, select New on the right handside of the page and select create new app.
+2. Choose a name for the app and select the region closest to you from the drop down menu.
+3. Still within Heroku, got to the Settings tab and click on the Reveal Config Vars button. Click on the Add button and add in settings for IP (0.0.0.0), PORT (5000), MONGODB_NAME, MONGO_URI and SECRET_KEY.
+3. To install Heroku via the terminal, type 'npm install -g heroku'.
 4. Log in to Heroku with the command heroku login-i' and type in your username and password.
 5. Create a requirements.txt file that contains the list of dependencies the project requires. Type 'pip3 freeze --local > requirements.txt' in the terminal.
 6. Create a Proc file by typing echo web: python run.py > Procfile in the terminal.
-7. Type 'git remote rm heroku' in the terminal so that only Github is connected to the project.
+7. Connect GitHub to the new Heroku app via the terminal using 'heroku git:remote a kids-activities-project'.
+8. Commit all the files and code in the workspace by typing 'git add .' and 'git commit -m "Message"'.
+9. To deploy the project to Heroku, type 'git push heroku master' in the terminal.
+
 
 
 ### Credits
